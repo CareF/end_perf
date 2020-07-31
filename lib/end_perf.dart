@@ -22,11 +22,20 @@ Duration kBuildBudget = const Duration(milliseconds: 16);
 /// API so it can be more universally used.
 typedef ControlCallback = Future<void> Function(WidgetController controller);
 
+bool _firstRun = true;
+
 /// watches the [FrameTiming] of `action` and report it to the e2e binding.
 Future<void> watchPerformance(
   E2EWidgetsFlutterBinding binding,
   Future<void> action(),
 ) async {
+  assert(() {
+    if (_firstRun) {
+      debugPrint(kDebugWarning);
+      _firstRun = false;
+    }
+    return true;
+  }());
   final List<FrameTiming> frameTimings = <FrameTiming>[];
   final TimingsCallback watcher = frameTimings.addAll;
   binding.addTimingsCallback(watcher);
