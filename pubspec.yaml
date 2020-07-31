@@ -1,0 +1,20 @@
+name: end_perf
+description:
+  A package to assist flutter performance test host-independently.
+version: 0.0.1
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test: any
+  e2e: ^0.6.1
+
+dev_dependencies:
+  pedantic: ^1.8.0
